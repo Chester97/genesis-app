@@ -1,6 +1,6 @@
-import { BASE_URL, createRequestData } from './utils';
+import { createRequestData } from './utils';
 
-const LOGIN_URL = `${BASE_URL}user/login`;
+const LOGIN_URL = `${process.env.REACT_APP_REST_API}user/login`;
 
 export const loginService = {
   loginUser: async (body) => {

@@ -1,6 +1,6 @@
-import { BASE_URL, createRequestData } from './utils';
+import { createRequestData } from './utils';
 
-const REGISTER_URL = `${BASE_URL}user/register`;
+const REGISTER_URL = `${process.env.REACT_APP_REST_API}user/register`;
 
 export const registerService = {
   registerUser: async (body) => {
