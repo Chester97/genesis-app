@@ -46,6 +46,7 @@ function registerReducer(state, action) {
         userData: null
       }
     }
+    default: return state;
   }
 
   return state;
