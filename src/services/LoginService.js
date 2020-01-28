@@ -1,15 +1,15 @@
-import { BASE_URL, createRequestData } from './utils';
+import { createRequestData } from '../utils/requestUtil';
 
-const LOGIN_URL = `${BASE_URL}user/login`;
+const LOGIN_URL = `${process.env.REACT_APP_REST_API}user/login`;
 
 export const loginService = {
   loginUser: async (body) => {
-    try{
+    try {
       const response = await fetch(LOGIN_URL, createRequestData('POST', body));
       const responseData = await response.json();
       return responseData;
-    }catch(e) {
+    } catch (e) {
       return e;
     }
-  }
-}
+  },
+};
