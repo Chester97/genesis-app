@@ -1,4 +1,4 @@
-import { createRequestData } from './utils';
+import { createRequestData } from '../utils/requestUtil';
 
 const REGISTER_URL = `${process.env.REACT_APP_REST_API}user/register`;
 
