@@ -97,7 +97,7 @@ const Register = () => {
       return;
     }
 
-    dispatch({ type: 'success', payload: userData });
+    dispatch({ type: 'success', payload: user });
   };
 
   return (
