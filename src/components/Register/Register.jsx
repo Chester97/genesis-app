@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
-import * as S from './styles';
+import { Link } from 'react-router-dom';
 import { registerService } from '../../services/RegisterService';
+import * as S from './styles';
+
 
 const initialFormFields = {
   name: '',
@@ -90,6 +92,7 @@ const Register = () => {
         email,
       },
     );
+    console.log(user);
     if (user && user.message) {
       dispatch(
         { type: 'error', payload: user.message },
@@ -117,11 +120,10 @@ const Register = () => {
       {
         userData
         && (
-          <p>
-            User
-            { userData.name }
-            has been registered.
-          </p>
+          <S.RegisterForm>
+            <S.SuccessMessage>User has been registered.</S.SuccessMessage>
+            <S.RegirectLink to="/">Home</S.RegirectLink>
+          </S.RegisterForm>
         )
       }
     </S.RegisterWrapper>
@@ -129,9 +131,3 @@ const Register = () => {
 };
 
 export default Register;
-
-
-// https://www.youtube.com/watch?v=o-nCM1857AQ&t=1122s
-// https://www.youtube.com/watch?v=sjyJBL5fkp8
-// https://www.youtube.com/watch?v=8yo44xN7-nQ
-// https://reacttraining.com/react-router/web/example/auth-workflow1
