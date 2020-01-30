@@ -8,3 +8,9 @@ export const createRequestData = (method, body) => ({
   method,
   body: JSON.stringify(body),
 });
+
+export const httpRequest = async (url, request) => {
+  const response = await fetch(url, request());
+  const responseData = await response.json();
+  return responseData;
+};

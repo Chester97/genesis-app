@@ -1,4 +1,4 @@
-import { createRequestData } from '../utils/requestUtil';
+import { createRequestData } from '../utils/httpRequestUtil';
 
 const LOGIN_URL = `${process.env.REACT_APP_REST_API}user/login`;
 
