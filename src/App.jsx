@@ -1,11 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import {Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import styled from 'styled-components';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-import styled from 'styled-components';
 import Register from './components/Register/Register';
-import './reset.css'
+import './reset.css';
 
 const MainWrapper = styled.section`
   box-sizing: border-box;
@@ -19,9 +18,9 @@ function App() {
   return (
     <Router>
       <MainWrapper>
-        <Route path="/" exact component={Home}/>
-        <Route path="/login" exact component={Login}/>
-        <Route path="/register" exact component={Register}/>
+        <Route path="/" exact component={Home} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/register" exact component={Register} />
       </MainWrapper>
     </Router>
   );

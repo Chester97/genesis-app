@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const RegisterWrapper = styled.section`
@@ -56,4 +57,25 @@ export const ErrorMessage = styled.h1`
     text-transform: uppercase;
     margin-top: 60px;
     text-align: center;
+`;
+
+export const RegirectLink = styled(Link)`
+    background: transparent;
+    border: 2px solid #F2F3F4;
+    border-radius: 4px;
+    color: #F2F3F4;
+    opacity: .5;
+    padding: 15px 0;
+    text-decoration: none;
+    text-align:center;
+
+    &:hover,
+    &:focus {
+        opacity: 1;
+    }
+`;
+
+export const SuccessMessage = styled.p`
+    text-align:center;
+    color: #5cb85c
 `;
