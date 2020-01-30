@@ -1,6 +1,6 @@
-import React, { useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useReducer, useContext } from 'react';
 import { registerService } from '../../services/RegisterService';
+import { UserContext } from '../../context/UserContext';
 import * as S from './styles';
 
 
@@ -73,6 +73,7 @@ const Register = () => {
     error,
     userData,
   } = state;
+  const [userContext,setUserContext] = useContext(UserContext);
 
   const handleChange = (e) => {
     dispatch({ type: 'cleanAlerts' });
@@ -92,7 +93,7 @@ const Register = () => {
         email,
       },
     );
-    console.log(user);
+
     if (user && user.message) {
       dispatch(
         { type: 'error', payload: user.message },
@@ -101,6 +102,7 @@ const Register = () => {
     }
 
     dispatch({ type: 'success', payload: user });
+    setUserContext(user);
   };
 
   return (
