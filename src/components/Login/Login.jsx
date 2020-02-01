@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 import * as S from './styles';
-import { loginService } from '../../services/LoginService';
+import { loginUser } from '../../services/login';
 
 const Login = () => {
   const formInitialState = { login: '', password: '' };
   const [formState, setFormState] = useState(formInitialState);
   const [errors, setErrors] = useState('');
+  const [userContext, setUserContext] = useContext(UserContext);
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -17,10 +19,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await loginService.loginUser(formState);
-    if (user && user.message) {
-      setErrors(user.message);
-    }
+    console.log(userContext);
+    // const user = await loginService.loginUser(formState);
+    // if (user && user.message) {
+    //   setErrors(user.message);
+    // }
   };
 
   return (

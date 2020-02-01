@@ -1,78 +1,13 @@
-import React, { useReducer } from 'react';
-import { Link } from 'react-router-dom';
-import { registerService } from '../../services/RegisterService';
+import React, { useReducer, useContext } from 'react';
+import { loginService } from '../../services/login';
+import { UserContext } from '../../context/UserContext';
+import { registerReducer, initialFormFields } from './reducer';
 import * as S from './styles';
 
 
-const initialFormFields = {
-  name: '',
-  surname: '',
-  login: '',
-  password: '',
-  email: '',
-  isRegistered: false,
-  error: '',
-  userData: null,
-};
-
-function registerReducer(state, action) {
-  switch (action.type) {
-    case 'field': {
-      return {
-        ...state,
-        [action.fieldName]: action.payload,
-      };
-    }
-    case 'register': {
-      return {
-        ...state,
-        isRegistered: true,
-        error: '',
-      };
-    }
-    case 'success': {
-      return {
-        ...initialFormFields,
-        isRegistered: false,
-        userData: action.payload,
-      };
-    }
-    case 'error': {
-      return {
-        ...state,
-        error: action.payload,
-        isRegistered: false,
-        name: '',
-        surname: '',
-        login: '',
-        password: '',
-        email: '',
-      };
-    }
-    case 'cleanAlerts': {
-      return {
-        ...state,
-        error: '',
-        userData: null,
-      };
-    }
-    default: return state;
-  }
-}
-
-
 const Register = () => {
-  const [state, dispatch] = useReducer(registerReducer, initialFormFields);
-  const {
-    name,
-    surname,
-    login,
-    password,
-    email,
-    isRegistered,
-    error,
-    userData,
-  } = state;
+  const [formData, dispatch] = useReducer(registerReducer, initialFormFields);
+  const [userContext, setUserContext] = useContext(UserContext);
 
   const handleChange = (e) => {
     dispatch({ type: 'cleanAlerts' });
@@ -81,18 +16,15 @@ const Register = () => {
   };
 
   const handleSend = async (e) => {
+    const {
+      name, surname, login, password, email,
+    } = formData;
     e.preventDefault();
     dispatch({ type: 'register' });
-    const user = await registerService.registerUser(
-      {
-        name,
-        surname,
-        login,
-        password,
-        email,
-      },
-    );
-    console.log(user);
+    const user = await loginService.registerUser({
+      name, surname, login, password, email,
+    });
+
     if (user && user.message) {
       dispatch(
         { type: 'error', payload: user.message },
@@ -101,7 +33,12 @@ const Register = () => {
     }
 
     dispatch({ type: 'success', payload: user });
+    setUserContext(user);
   };
+
+  const {
+    name, surname, login, password, email, isRegistered, error, userData,
+  } = formData;
 
   return (
     <S.RegisterWrapper>
