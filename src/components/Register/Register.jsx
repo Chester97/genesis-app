@@ -1,13 +1,11 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import { loginService } from '../../services/login';
-import { UserContext } from '../../context/UserContext';
 import { registerReducer, initialFormFields } from './reducer';
 import * as S from './styles';
 
 
 const Register = () => {
   const [formData, dispatch] = useReducer(registerReducer, initialFormFields);
-  const [userContext, setUserContext] = useContext(UserContext);
 
   const handleChange = (e) => {
     dispatch({ type: 'cleanAlerts' });
@@ -33,7 +31,6 @@ const Register = () => {
     }
 
     dispatch({ type: 'success', payload: user });
-    setUserContext(user);
   };
 
   const {
