@@ -3,14 +3,14 @@ const REQUEST_CONFIG = {
   headers: { 'Content-Type': 'application/json' },
 };
 
-export const createRequestData = (method, body) => ({
+const createRequestData = (method, body) => ({
   ...REQUEST_CONFIG,
   method,
   body: JSON.stringify(body),
 });
 
-export const httpRequest = async (url, request) => {
-  const response = await fetch(url, request());
+export const httpRequest = async (url, method, body) => {
+  const response = await fetch(url, createRequestData(method, body));
   const responseData = await response.json();
   return responseData;
 };

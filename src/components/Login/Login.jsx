@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import * as S from './styles';
-import { loginService } from '../../services/LoginService';
+import { loginUser } from '../../services/login';
 
 const Login = () => {
   const formInitialState = { login: '', password: '' };
   const [formState, setFormState] = useState(formInitialState);
   const [errors, setErrors] = useState('');
-  const [userContext,setUserContext] = useContext(UserContext);
+  const [userContext, setUserContext] = useContext(UserContext);
 
   const handleChange = (e) => {
     const { value } = e.target;
