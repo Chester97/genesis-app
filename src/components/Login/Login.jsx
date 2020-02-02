@@ -1,39 +1,31 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { loginService } from '../../services/login';
 import * as S from './styles';
-import { loginUser } from '../../services/login';
 
 const Login = () => {
-  const formInitialState = { login: '', password: '' };
-  const [formState, setFormState] = useState(formInitialState);
-  const [errors, setErrors] = useState('');
+  const loginRef = useRef(null);
+  const passwordRef = useRef(null);
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setFormState({
-      ...formState,
-      [e.target.name]: value,
-    });
-  };
+  useEffect(() => {
+    loginRef.current.focus();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const user = await loginService.loginUser(formState);
-    // if (user && user.message) {
-    //   setErrors(user.message);
-    // }
+    const login = loginRef.current.value;
+    const password = passwordRef.current.value;
+    const userLoginStatus = await loginService.loginUser({ login, password });
+    console.log(userLoginStatus);
   };
 
   return (
     <S.LoginWrapper>
       <S.LoginMainText>Login Form</S.LoginMainText>
       <S.LoginForm onSubmit={handleSubmit}>
-        <S.FormItem type="text" name="login" placeholder="Your Login" onChange={handleChange} />
-        <S.FormItem type="text" name="password" placeholder="Your password" onChange={handleChange} />
+        <S.FormItem type="text" name="login" placeholder="Your Login" ref={loginRef} />
+        <S.FormItem type="text" name="password" placeholder="Your password" ref={passwordRef} />
         <S.FormButton type="submit">Send</S.FormButton>
       </S.LoginForm>
-      {
-        errors ? <S.ErrorMessage>{errors}</S.ErrorMessage> : null
-      }
     </S.LoginWrapper>
   );
 };
