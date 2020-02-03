@@ -7,7 +7,12 @@ const REGISTER_URL = `${USER_URL}register`;
 export const loginService = {
   loginUser: async (body) => {
     try {
-      return httpRequest(LOGIN_URL, 'POST', body);
+      const userLoginResponse = await httpRequest(LOGIN_URL, 'POST', body);
+      if (userLoginResponse && !userLoginResponse.message) {
+        loginService.saveAccessToken(userLoginResponse.accessToken);
+        return userLoginResponse;
+      }
+      return userLoginResponse;
     } catch (e) {
       return e;
     }
@@ -18,5 +23,8 @@ export const loginService = {
     } catch (e) {
       return e;
     }
+  },
+  saveAccessToken: (token) => {
+    localStorage.setItem('AccessToken', token);
   },
 };
