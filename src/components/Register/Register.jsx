@@ -1,6 +1,4 @@
 import React, { useReducer } from 'react';
-import { useDispatch } from 'react-redux';
-import { SET_USER_NAME } from '../../redux/user/acion-types';
 import { loginService } from '../../services/login';
 import { registerReducer, initialFormFields } from './reducer';
 import * as S from './styles';
@@ -8,7 +6,6 @@ import * as S from './styles';
 
 const Register = () => {
   const [formData, dispatch] = useReducer(registerReducer, initialFormFields);
-  const reduxDispatch = useDispatch();
 
   const handleChange = (e) => {
     dispatch({ type: 'cleanAlerts' });
@@ -30,11 +27,7 @@ const Register = () => {
       dispatch(
         { type: 'error', payload: user.message },
       );
-      return;
     }
-
-    dispatch({ type: 'success', payload: user });
-    reduxDispatch({ type: SET_USER_NAME, payload: user.name });
   };
 
   const {

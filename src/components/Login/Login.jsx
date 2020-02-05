@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { loginService } from '../../services/login';
+import { useDispatch } from 'react-redux';
 import * as S from './styles';
 
 const Login = () => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
+  const reduxDispatch = useDispatch();
 
   useEffect(() => {
     loginRef.current.focus();
@@ -14,8 +15,7 @@ const Login = () => {
     e.preventDefault();
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
-    const userLoginStatus = await loginService.loginUser({ login, password });
-    console.log(userLoginStatus);
+    reduxDispatch({ type: 'USER_LOGIN_REQUEST', payload: { login, password } });
   };
 
   return (
