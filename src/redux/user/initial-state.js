@@ -1,3 +1,5 @@
 export const initialState = {
-  name: '',
+  error: false,
+  loading: false,
+  userData: null,
 };

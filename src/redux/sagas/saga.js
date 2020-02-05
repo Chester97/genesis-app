@@ -1,24 +1,19 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { loginService } from '../../services/login';
-import { updateUser } from '../user/actions';
+import { userLoginError, userLoginSuccess } from '../user/actions';
+import { USER_LOGIN_REQUEST } from '../user/acion-types';
 
-function* fetchUserData(action) {
-  console.log("cossssss")
-  console.log(action);
+function* fetchUserData({ payload }) {
   try {
-    const userData = yield call(loginService.loginUser, action.payload);
-    console.log("cossssssdsdsdsd")
-
-    yield put({ type: 'USER_DATA_SUCCEEDED', payload: userData });
+    const response = yield call(loginService.loginUser, payload);
+    yield put(userLoginSuccess(response));
   } catch (e) {
-    yield put({ type: 'USER_DATA_FAILED', message: e.message });
+    yield put(userLoginError(e));
   }
 }
 
 function* mySaga() {
-  console.log("przed")
-  yield takeEvery('USER_DATA_REQUESTED', fetchUserData);
-  console.log("po")
+  yield takeEvery(USER_LOGIN_REQUEST, fetchUserData);
 }
 
 export default mySaga;

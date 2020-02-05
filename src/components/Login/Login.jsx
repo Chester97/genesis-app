@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { USER_DATA_SUCCEEDED } from '../../redux/user/acion-types';
-import { loginService } from '../../services/login';
 import * as S from './styles';
 
 const Login = () => {
@@ -17,9 +15,7 @@ const Login = () => {
     e.preventDefault();
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
-    const userLoginStatus = await loginService.loginUser({ login, password });
-    console.log(userLoginStatus);
-    reduxDispatch({ type: USER_DATA_SUCCEEDED, payload: userLoginStatus });
+    reduxDispatch({ type: 'USER_LOGIN_REQUEST', payload: { login, password } });
   };
 
   return (
