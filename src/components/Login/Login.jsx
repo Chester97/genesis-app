@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as S from './styles';
 
-const Login = () => {
+const Login = ({ history }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const reduxDispatch = useDispatch();
@@ -16,6 +17,7 @@ const Login = () => {
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
     reduxDispatch({ type: 'USER_LOGIN_REQUEST', payload: { login, password } });
+    history.push('/content');
   };
 
   return (
