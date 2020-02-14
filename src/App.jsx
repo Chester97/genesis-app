@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Content from './components/Content/Content';
+import { loginRedirectPath } from './utils/loginAuth/loginAuth';
 import './reset.css';
 
 const MainWrapper = styled.section`
@@ -19,11 +20,13 @@ function App() {
   return (
     <Router>
       <MainWrapper>
-        <Route path="/" exact component={Home} />
-        <Route path="/register" exact component={Register} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/content" exact component={Content} />
-        { !localStorage.getItem('AccessToken') ? <Redirect to="/login" /> : <Redirect to="/content" /> }
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Redirect to={loginRedirectPath} />
+          <Route exact path="/content" component={Content} />
+        </Switch>
       </MainWrapper>
     </Router>
   );
