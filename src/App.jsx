@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Content from './components/Content/Content';
+import Protected from './components/Protected/Protected';
 import { loginRedirectPath } from './utils/loginAuth/loginAuth';
 import './reset.css';
 
@@ -24,8 +25,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Redirect to={loginRedirectPath} />
-          <Route exact path="/content" component={Content} />
+          <Protected exact path="/content" component={Content} />
+          {/* <Redirect to={loginRedirectPath} /> */}
         </Switch>
       </MainWrapper>
     </Router>
