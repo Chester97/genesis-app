@@ -25,5 +25,8 @@ module.exports = {
   rules: {
     "import/prefer-default-export": "off",
     "linebreak-style": 0,
+    "no-confusing-arrow": ["error", {"allowParens": true}],
+    "explicitSpread": "ignore" | "enforce",
+    "react/jsx-props-no-spreading": "off",
   },
 };
