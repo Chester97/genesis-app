@@ -22,12 +22,12 @@ const Register = () => {
     const user = await loginService.registerUser({
       name, surname, login, password, email,
     });
-
     if (user && user.message) {
-      dispatch(
+      return dispatch(
         { type: 'error', payload: user.message },
       );
     }
+    return dispatch({ type: 'success', payload: user });
   };
 
   const {

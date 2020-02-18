@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as S from './styles';
 
 const Login = () => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const reduxDispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     loginRef.current.focus();
@@ -16,6 +18,7 @@ const Login = () => {
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
     reduxDispatch({ type: 'USER_LOGIN_REQUEST', payload: { login, password } });
+    history.push('/main');
   };
 
   return (

@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Main from './components/Main/Main';
+import Protected from './components/Protected/Protected';
 import './reset.css';
 
 const MainWrapper = styled.section`
@@ -18,9 +20,12 @@ function App() {
   return (
     <Router>
       <MainWrapper>
-        <Route path="/" exact component={Home} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Protected exact path="/main" component={Main} />
+        </Switch>
       </MainWrapper>
     </Router>
   );
