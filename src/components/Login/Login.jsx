@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as S from './styles';
 
-const Login = ({ history }) => {
+const Login = () => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const reduxDispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     loginRef.current.focus();
