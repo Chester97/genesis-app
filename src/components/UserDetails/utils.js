@@ -11,6 +11,9 @@ export const renderUserDetailsItem = (itemObject) => {
     login,
     email,
   };
+  const convertedObjects = Object.entries(currentUserDetails);
 
-  return Object.entries(currentUserDetails);
+  const finalObject = convertedObjects.map((arr1) => ({ label: arr1[0], value: arr1[1] }));
+
+  return finalObject;
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const LoginWrapper = styled.section`
-    height: 100vh;
+    height: calc(100% - 80px);
     background: #1B1B1B;
     color: #F2F3F4;
     display: flex;

@@ -1,11 +1,18 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const mainSection = styled.section`
-  padding:10px;
+export const MainContainer = styled.section`
+  height: calc(100% - 80px);
+  padding:40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const hamburgetButton = styled.button`
-  position: relative;
+export const HamburgetButton = styled.button`
+  position: fixed;
+  top:40px;
+  left:20px;
   border: none;
   background: transparent;
   display: block;
@@ -20,7 +27,7 @@ export const hamburgetButton = styled.button`
     outline:none;
   }
 `;
-export const hamburgerItemTop = styled.span`
+export const HamburgerItemTop = styled.span`
   position: absolute;
   height: 1px;
   background: black;
@@ -33,10 +40,10 @@ export const hamburgerItemTop = styled.span`
   transition: .25s ease-in-out;
   transform: rotate(0deg);
 `;
-export const hamburgerItemMiddle = styled.span`
+export const HamburgerItemMiddle = styled.span`
   position: absolute;
   height: 1px;
-  background: black;
+  background: ${(props) => (props.isCollapsed ? 'white' : 'black')};
   margin-top: 5px;
   width: 100%;
   opacity: 1;
@@ -49,9 +56,10 @@ export const hamburgerItemMiddle = styled.span`
 
   &:nth-child(2) {
     transform: ${(props) => (props.isCollapsed ? 'rotate(-45deg)' : 'rotate(0)')};
+    background: white;
   }
 `;
-export const hamburgerItemBottom = styled.span`
+export const HamburgerItemBottom = styled.span`
   position: absolute;
   height: 1px;
   background: black;
@@ -65,7 +73,7 @@ export const hamburgerItemBottom = styled.span`
   transition: .25s ease-in-out;
 `;
 
-export const toggleMenu = styled.div`
+export const ToggleMenu = styled.div`
   width:100%;
   height:100vh;
   background:tomato;
@@ -78,4 +86,21 @@ export const toggleMenu = styled.div`
   align-items: center;
   justify-content:center;
   flex-direction: column;
+`;
+
+export const ToggleMenuItem = styled(Link)`
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  padding: 26px;
+  font-size: 24px;
+`;
+
+export const ToggleMenuButton = styled.button`
+  background: transparent;
+  border: 2px solid #F2F3F4;
+  border-radius: 4px;
+  color: #F2F3F4;
+  padding: 15px 30px;
+  margin: 20px 0;
 `;
