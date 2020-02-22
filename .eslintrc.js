@@ -28,5 +28,6 @@ module.exports = {
     "no-confusing-arrow": ["error", {"allowParens": true}],
     "explicitSpread": "ignore" | "enforce",
     "react/jsx-props-no-spreading": "off",
+    'max-len': ["error", { "code": 130 }],
   },
 };

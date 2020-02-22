@@ -41,7 +41,7 @@ const Register = () => {
         <S.FormItem type="text" name="name" value={name} onChange={handleChange} placeholder="Your Name..." />
         <S.FormItem type="text" name="surname" value={surname} onChange={handleChange} placeholder="Your Surname..." />
         <S.FormItem type="text" name="login" value={login} onChange={handleChange} placeholder="Your Login..." />
-        <S.FormItem type="text" name="password" value={password} onChange={handleChange} placeholder="Your Password..." />
+        <S.FormItem type="password" name="password" value={password} onChange={handleChange} placeholder="Your Password..." />
         <S.FormItem type="text" name="email" value={email} onChange={handleChange} placeholder="Your Email..." />
         <S.FormButton type="submit" disabled={isRegistered}>
           {isRegistered ? 'Registering...' : 'Register'}
