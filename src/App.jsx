@@ -9,6 +9,7 @@ import Protected from './components/Protected/Protected';
 import Child from './components/Child/Child';
 import './reset.css';
 import UserDetails from './components/UserDetails/UserDetails';
+import Post from './components/Post/Post';
 
 const MainWrapper = styled.section`
   box-sizing: border-box;
@@ -26,6 +27,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/post" component={Post} />
           <Route exact path="/login" component={Login} />
           <Protected path="/main" component={Main} />
         </Switch>

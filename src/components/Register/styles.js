@@ -28,10 +28,18 @@ export const FormItem = styled.input`
     margin: 0 0 30px 0;
     border: none;
     border-bottom: 1px solid white;
-    background: none;
+    background: none !important;
     color: #F2F3F4;
     padding: 0 0 5px 5px;
     opacity: .5;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus {
+        -webkit-text-fill-color: white;
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
 
     &:focus {
         opacity: 1;

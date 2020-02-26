@@ -37,12 +37,12 @@ const Register = () => {
   return (
     <S.RegisterWrapper>
       <S.RegisterMainText>Register Form</S.RegisterMainText>
-      <S.RegisterForm onSubmit={handleSend}>
-        <S.FormItem type="text" name="name" value={name} onChange={handleChange} placeholder="Your Name..." />
-        <S.FormItem type="text" name="surname" value={surname} onChange={handleChange} placeholder="Your Surname..." />
-        <S.FormItem type="text" name="login" value={login} onChange={handleChange} placeholder="Your Login..." />
-        <S.FormItem type="password" name="password" value={password} onChange={handleChange} placeholder="Your Password..." />
-        <S.FormItem type="text" name="email" value={email} onChange={handleChange} placeholder="Your Email..." />
+      <S.RegisterForm onSubmit={handleSend} autoComplete="off">
+        <S.FormItem type="text" name="name" value={name} onChange={handleChange} placeholder="Your Name..." minLength="2" maxLength="30" />
+        <S.FormItem type="text" name="surname" value={surname} onChange={handleChange} placeholder="Your Surname..." minLength="2" maxLength="50" />
+        <S.FormItem type="text" name="login" value={login} onChange={handleChange} placeholder="Your Login..." minLength="3" maxLength="40" />
+        <S.FormItem type="password" name="password" value={password} onChange={handleChange} placeholder="Your Password..." minLength="4" maxLength="100" />
+        <S.FormItem type="text" name="email" value={email} onChange={handleChange} placeholder="Your Email..." minLength="7" maxLength="50" />
         <S.FormButton type="submit" disabled={isRegistered}>
           {isRegistered ? 'Registering...' : 'Register'}
         </S.FormButton>
