@@ -16,9 +16,7 @@ const Main = () => {
   const { path, url } = useRouteMatch();
   const location = useLocation();
 
-  const handleClick = () => {
-    authUser.signout(() => history.push('/login'));
-  };
+  const handleClick = () => authUser.signout(() => history.push('/login'));
 
   useEffect(() => {
     setCollapsed(false);
@@ -46,7 +44,7 @@ const Main = () => {
         </Route>
       </Switch>
       <S.ToggleMenu isCollapsed={collapsed}>
-        <S.ToggleMenuItem to={`${url}/`}>Main</S.ToggleMenuItem>
+        <S.ToggleMenuItem to={`${url}`}>Main</S.ToggleMenuItem>
         <S.ToggleMenuItem onClick={handleClick} to="/login">Logout</S.ToggleMenuItem>
         <S.ToggleMenuItem to={`${url}/userDetails`}>UserDetails</S.ToggleMenuItem>
       </S.ToggleMenu>

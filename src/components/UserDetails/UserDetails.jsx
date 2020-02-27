@@ -15,7 +15,7 @@ const UserDetails = () => {
 
   return (
     <S.UserDetailsWrapper>
-      { userDetail && userDetail.map((item) => (<UserDetailsItem key={item.value} label={item.label} value={item.value} />)) }
+      { userDetail && userDetail.map((item) => (<UserDetailsItem key={item.label} label={item.label} value={item.value} />)) }
     </S.UserDetailsWrapper>
   );
 };
