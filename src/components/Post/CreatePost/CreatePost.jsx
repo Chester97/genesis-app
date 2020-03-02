@@ -14,13 +14,13 @@ const CreatePost = () => {
 
   const createPostHandler = (e) => {
     e.preventDefault();
+    setTitle('');
+    setDescription('');
     postService.addPost({ title, description })
       .then(() => {
-        setTitle('');
-        setDescription('');
         setPostAlert('Post has been added');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => err);
   };
 
   const handleDescriptionChange = (e) => {

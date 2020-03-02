@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import socketIOClient from 'socket.io-client';
 import * as S from './styles';
 
 const Post = () => {
   const [loadMore, setLoadMore] = useState(false);
   const [addComment, setAddComment] = useState(false);
+  const socket = socketIOClient('http://localhost:3000');
+
+
+  useEffect(() => {
+    socket.on('fromAPI', (data) => console.log(data));
+  }, []);
+
+  const handleTest = () => {
+    socket.emit('chat', {
+      message: 'Siema',
+    });
+  };
 
   return (
     <S.PostContainerBackground>
       <S.PostWrapper>
-        <S.PostTextDetail>Kamil K.</S.PostTextDetail>
+        <S.PostTextDetail onClick={handleTest}>Kamil K.</S.PostTextDetail>
         <S.PostTextDetail>How to earn money?</S.PostTextDetail>
         <S.PostTextContainer loadMore={loadMore}>
            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui itaque culpa aspernatur, cum molestias expedita tempore enim fuga rem officiis nesciunt cumque perspiciatis nulla, soluta repellat, quo aperiam. Pariatur, expedita.
