@@ -6,9 +6,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Main from './components/Main/Main';
 import Protected from './components/Protected/Protected';
-import Child from './components/Child/Child';
 import './reset.css';
-import UserDetails from './components/UserDetails/UserDetails';
 
 const MainWrapper = styled.section`
   box-sizing: border-box;

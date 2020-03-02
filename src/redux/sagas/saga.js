@@ -7,7 +7,6 @@ function* fetchUserData({ payload }) {
   try {
     const response = yield call(loginService.loginUser, payload);
     yield put(userLoginSuccess(response));
-    //Zrobic yielda ktory zdispatchuje akcje routingu - history.push
   } catch (e) {
     yield put(userLoginError(e));
   }

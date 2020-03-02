@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const MainContainer = styled.section`
-  height: calc(100% - 80px);
-  padding:40px 20px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
