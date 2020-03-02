@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const PostContainerBackground = styled.section`
-    min-height: calc(100% - 80px);
+    height: 100%;
+    box-sizing: border-box;
     background: #1B1B1B;
     color: #F2F3F4;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+    padding: 90px 20px;
 `;
 
 export const PostWrapper = styled.div`

@@ -9,6 +9,8 @@ import {
 import { authUser } from '../../utils/loginAuth/loginAuth';
 import UserDetails from '../UserDetails/UserDetails';
 import * as S from './styles';
+import Post from '../Post/Post';
+import CreatePost from '../Post/CreatePost/CreatePost';
 
 const Main = () => {
   const history = useHistory();
@@ -36,6 +38,12 @@ const Main = () => {
         <S.HamburgerItemBottom isCollapsed={collapsed} />
       </S.HamburgetButton>
       <Switch>
+        <Route exact path={`${path}/posts`}>
+          <Post />
+        </Route>
+        <Route exact path={`${path}/addPost`}>
+          <CreatePost />
+        </Route>
         <Route exact path={`${path}/userDetails`}>
           <UserDetails />
         </Route>
@@ -47,6 +55,8 @@ const Main = () => {
         <S.ToggleMenuItem to={`${url}`}>Main</S.ToggleMenuItem>
         <S.ToggleMenuItem onClick={handleClick} to="/login">Logout</S.ToggleMenuItem>
         <S.ToggleMenuItem to={`${url}/userDetails`}>UserDetails</S.ToggleMenuItem>
+        <S.ToggleMenuItem to={`${url}/posts`}>Posts</S.ToggleMenuItem>
+        <S.ToggleMenuItem to={`${url}/addPost`}>Add Post</S.ToggleMenuItem>
       </S.ToggleMenu>
     </S.MainContainer>
   );
