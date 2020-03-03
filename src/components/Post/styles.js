@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const PostContainerBackground = styled.section`
     height: 100%;
+    width: 100%;
     box-sizing: border-box;
     background: #1B1B1B;
     color: #F2F3F4;
