@@ -6,9 +6,9 @@ import PostItem from './PostItem/PostItem';
 
 
 const Post = () => {
+
   const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
   const [posts, setPosts] = useState([]);
-
   const socketStream = Rx.Observable.create((observer) => {
     socket.on('posts', (data) => { observer.next(data); });
   });

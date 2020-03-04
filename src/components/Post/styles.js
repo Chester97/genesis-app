@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as G from '../../shared/styles';
 
 export const PostContainerBackground = styled.section`
     height: 100%;
@@ -47,21 +48,11 @@ export const PostButtonContainer = styled.div`
 `;
 
 export const PostCommentButton = styled.button`
-    background: transparent;
-    border: 2px solid #F2F3F4;
-    border-radius: 4px;
-    color: #F2F3F4;
-    opacity: .5;
-    padding: 15px 0;
+    ${G.Button};
     flex:1;
     margin: 0 10px 0 0;
     &:nth-child(2) {
       margin: 0 0 0 10px;
-    }
-
-    &:hover,
-    &:focus {
-        opacity: 1;
     }
 `;
 

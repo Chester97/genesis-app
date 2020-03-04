@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from '../styles';
 
-const PostItem = ({ title,description }) => {
+const PostItem = ({ title, description }) => {
   const [loadMore, setLoadMore] = useState(false);
   const [addComment, setAddComment] = useState(false);
 

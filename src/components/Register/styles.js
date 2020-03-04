@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import * as G from '../../shared/styles';
+
 
 export const RegisterWrapper = styled.section`
     height: 100vh;
@@ -12,59 +14,23 @@ export const RegisterWrapper = styled.section`
 `;
 
 export const RegisterMainText = styled.h1`
-    text-align: center;
-    font-size: 32px;
+    ${G.MainText}
 `;
 
 export const RegisterForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 80px;
-    min-width: 70vw;
+    ${G.Form}
 `;
 
 export const FormItem = styled.input`
-    margin: 0 0 30px 0;
-    border: none;
-    border-bottom: 1px solid white;
-    background: none !important;
-    color: #F2F3F4;
-    padding: 0 0 5px 5px;
-    opacity: .5;
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
-    &:-webkit-autofill:focus {
-        -webkit-text-fill-color: white;
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-        transition: background-color 5000s ease-in-out 0s;
-    }
-
-    &:focus {
-        opacity: 1;
-    }
+    ${G.Input};
 `;
 
 export const FormButton = styled.button`
-    background: transparent;
-    border: 2px solid #F2F3F4;
-    border-radius: 4px;
-    color: #F2F3F4;
-    opacity: .5;
-    padding: 15px 0;
-
-    &:hover,
-    &:focus {
-        opacity: 1;
-    }
+    ${G.Button}
 `;
 
 export const ErrorMessage = styled.h1`
-    color: #FFD2D2;
-    text-transform: uppercase;
-    margin-top: 60px;
-    text-align: center;
+    ${G.ErrorMessage}
 `;
 
 export const RegirectLink = styled(Link)`

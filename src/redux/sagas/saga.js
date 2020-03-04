@@ -6,7 +6,11 @@ import { USER_LOGIN_REQUEST } from '../user/acion-types';
 function* fetchUserData({ payload }) {
   try {
     const response = yield call(loginService.loginUser, payload);
-    yield put(userLoginSuccess(response));
+    if (response && !response.message) {
+      yield put(userLoginSuccess(response));
+    } else {
+      yield put(userLoginError(response));
+    }
   } catch (e) {
     yield put(userLoginError(e));
   }
