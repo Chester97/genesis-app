@@ -27,6 +27,7 @@ const Login = () => {
     if (reduxSelector.user.error) {
       setError(reduxSelector.user.error.message);
     } else if (reduxSelector.user.userData) {
+      setError(null);
       authUser.authenticate(() => history.push('/main'));
     }
   }, [reduxSelector.user]);

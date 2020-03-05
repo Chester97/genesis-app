@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import * as G from '../../shared/styles';
 
 export const PostContainerBackground = styled.section`
-    height: 100%;
+    min-height: 100vh;
+    max-height: auto;
     width: 100%;
     box-sizing: border-box;
     background: #1B1B1B;
@@ -38,7 +39,7 @@ export const PostTextDetail = styled.h1`
 export const PostTextContainer = styled.div`
   padding:5px 0;
   margin-bottom: 20px;
-  height: ${(props) => (props.loadMore ? '100%' : '128px')};
+  height: ${(props) => (props.loadMore ? '128px' : 'auto')};
   overflow-y: hidden;
 `;
 

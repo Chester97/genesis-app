@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from '../styles';
 
-const PostItem = ({ title, description }) => {
+const PostItem = ({ title, description, loadMoreText }) => {
   const [loadMore, setLoadMore] = useState(false);
   const [addComment, setAddComment] = useState(false);
 
@@ -15,9 +15,14 @@ const PostItem = ({ title, description }) => {
       </S.PostTextContainer>
       <S.PostButtonContainer>
         <S.PostCommentButton onClick={() => setAddComment(!addComment)}>Comment</S.PostCommentButton>
-        <S.PostCommentButton onClick={() => setLoadMore(!loadMore)}>
-          {loadMore ? 'See Less...' : 'See More...'}
-        </S.PostCommentButton>
+        {
+          loadMoreText
+          && (
+            <S.PostCommentButton onClick={() => setLoadMore(!loadMore)}>
+              {loadMore ? 'See Less...' : 'See More...'}
+            </S.PostCommentButton>
+          )
+        }
       </S.PostButtonContainer>
       {
         addComment && (
@@ -35,4 +40,5 @@ export default PostItem;
 PostItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  loadMoreText: PropTypes.bool.isRequired,
 };

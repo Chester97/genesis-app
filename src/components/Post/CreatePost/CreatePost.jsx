@@ -3,18 +3,15 @@ import socketIOClient from 'socket.io-client';
 import * as S from './styles';
 import { postService } from '../../../services/post';
 
-let socket;
-
-
 const CreatePost = () => {
   const postTitleRef = React.createRef();
   const [title, setTitle] = useState('');
+  const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
   const [description, setDescription] = useState('');
   const [postAlert, setPostAlert] = useState('');
 
   useEffect(() => {
     postTitleRef.current.focus();
-    socket = socketIOClient('http://localhost:3000');
   }, []);
 
   const createPostHandler = (e) => {

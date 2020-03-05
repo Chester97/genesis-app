@@ -3,6 +3,7 @@ import * as Rx from 'rxjs';
 import socketIOClient from 'socket.io-client';
 import * as S from './styles';
 import PostItem from './PostItem/PostItem';
+import { postService } from '../../services/post';
 
 
 const Post = () => {
@@ -14,8 +15,17 @@ const Post = () => {
   });
 
   useEffect(() => {
+    postService.getAllPosts()
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
     socketStream.subscribe((data) => {
-      setPosts([...posts, data]);
+      console.log(data);
+      console.log(posts);
     });
   }, [posts]);
 
@@ -23,7 +33,7 @@ const Post = () => {
   return (
     <S.PostContainerBackground>
       {
-          posts && posts.map((item) => <PostItem key={item.author} title={item.title} description={item.description} />)
+          posts && posts.map((item) => <PostItem key={item.title} title={item.title} description={item.description} loadMoreText={item.description.length > 350 && true} />)
       }
     </S.PostContainerBackground>
   );

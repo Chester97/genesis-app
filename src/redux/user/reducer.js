@@ -21,6 +21,12 @@ export function user(state = initialState, action) {
         loading: true,
         userData: null,
       };
+    case 'USER_LOGOUT':
+      return {
+        error: null,
+        loading: false,
+        userData: null,
+      };
     default:
       return state;
   }
