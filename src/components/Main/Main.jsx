@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   useHistory,
@@ -10,6 +10,7 @@ import {
 import { authUser } from '../../utils/loginAuth/loginAuth';
 import Post from '../Post/Post';
 import CreatePost from '../Post/CreatePost/CreatePost';
+import { SideMenuContext } from '../../context/SideMenu';
 import UserDetails from '../UserDetails/UserDetails';
 import * as S from './styles';
 
@@ -19,6 +20,7 @@ const Main = () => {
   const { path, url } = useRouteMatch();
   const location = useLocation();
   const reduxDispatch = useDispatch();
+  const [context, setContext] = useContext(SideMenuContext);
 
   const logoutUser = () => {
     reduxDispatch({ type: 'USER_LOGOUT' });
@@ -27,9 +29,11 @@ const Main = () => {
 
   useEffect(() => {
     setCollapsed(false);
+    setContext(false);
   }, [location]);
 
   const toggleHamburger = () => {
+    setContext(!context);
     setCollapsed(!collapsed);
     return null;
   };

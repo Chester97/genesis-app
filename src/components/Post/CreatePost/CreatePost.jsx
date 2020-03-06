@@ -6,7 +6,7 @@ import { postService } from '../../../services/post';
 const CreatePost = () => {
   const postTitleRef = React.createRef();
   const [title, setTitle] = useState('');
-  const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
+  // const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
   const [description, setDescription] = useState('');
   const [postAlert, setPostAlert] = useState('');
 
@@ -21,8 +21,8 @@ const CreatePost = () => {
     postService.addPost({ title, description })
       .then((data) => {
         setPostAlert('Post has been added');
-        socket.emit('posts', data);
-        socket.on('posts', (socketData) => console.log(socketData));
+        // socket.emit('posts', data);
+        // socket.on('posts', (socketData) => console.log(socketData));
       })
       .catch((err) => err);
   };

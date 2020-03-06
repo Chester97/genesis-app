@@ -8,26 +8,33 @@ import PostItem from './PostItem/PostItem';
 
 const Post = () => {
 
-  const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
+  // const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
   const [posts, setPosts] = useState([]);
   const reduxSelector = useSelector((state) => state.posts.postsData);
-  const socketStream = Rx.Observable.create((observer) => {
-    socket.on('posts', (data) => { observer.next(data); });
-  });
-
-  useEffect(() => {
-  }, []);
-
-  useEffect(() => {
-    socketStream.subscribe((data) => {
-      setPosts([...posts, data]);
-    });
-  }, [posts]);
+  // const socketStream = Rx.Observable.create((observer) => {
+  //   socket.on('posts', (data) => { observer.next(data); });
+  // });
+  // useEffect(() => {
+  //   socketStream.subscribe((data) => {
+  //     setPosts([...posts, data]);
+  //   });
+  //   return () => console.log("odmontowany")
+  // }, [posts]);
 
   return (
     <S.PostContainerBackground>
       {
           reduxSelector && reduxSelector.map((item) => (
+            <PostItem
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              loadMoreText={item.description.length > 350 && true}
+            />
+          ))
+      }
+      {
+          posts && posts.map((item) => (
             <PostItem
               key={item.title}
               title={item.title}
