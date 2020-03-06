@@ -28,6 +28,7 @@ const Login = () => {
       setError(reduxSelector.user.error.message);
     } else if (reduxSelector.user.userData) {
       setError(null);
+      reduxDispatch({ type: 'POSTS_REQUEST' });
       authUser.authenticate(() => history.push('/main'));
     }
   }, [reduxSelector.user]);

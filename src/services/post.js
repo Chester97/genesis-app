@@ -14,11 +14,8 @@ export const postService = {
   },
   getAllPosts: async () => {
     try {
-      if (localStorage.getItem('posts')) {
-        console.log(JSON.parse(localStorage.getItem('posts')));
-        return JSON.parse(localStorage.getItem('posts'));
-      }
-      return await httpRequestAuth(GET_ALL_POSTS_URL, 'GET');
+      const abc = await httpRequestAuth(GET_ALL_POSTS_URL, 'GET');
+      return abc;
     } catch (e) {
       return e;
     }

@@ -38,11 +38,10 @@ export const httpRequestAuth = async (url, method, body = null) => {
     let response;
     if (body) {
       response = await fetch(url, createRequestData(method, body, authToken));
-    } else {
-      response = await fetch(url, createRequestDataGet(method, authToken));
+      return response.json();
     }
+    response = await fetch(url, createRequestDataGet(method, authToken));
     const responseData = await response.json();
-    localStorage.setItem('posts', JSON.stringify(responseData));
     return responseData;
   } catch (e) {
     return e;
