@@ -7,6 +7,7 @@ export const MainContainer = styled.section`
   justify-content: center;
 `;
 
+// Literowka?
 export const HamburgetButton = styled.button`
   position: fixed;
   top:40px;

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import socketIOClient from 'socket.io-client';
 import * as S from './styles';
 import { postService } from '../../../services/post';
 
 const CreatePost = () => {
   const postTitleRef = React.createRef();
   const [title, setTitle] = useState('');
-  // const [socket, setSocket] = useState(socketIOClient('http://localhost:3000'));
   const [description, setDescription] = useState('');
   const [postAlert, setPostAlert] = useState('');
 
@@ -20,9 +18,8 @@ const CreatePost = () => {
     setDescription('');
     postService.addPost({ title, description })
       .then((data) => {
+        // Zamiast takich "alertow" przydalby sie globalny mechanizm toastow/modali/komunikatow
         setPostAlert('Post has been added');
-        // socket.emit('posts', data);
-        // socket.on('posts', (socketData) => console.log(socketData));
       })
       .catch((err) => err);
   };

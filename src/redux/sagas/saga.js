@@ -2,9 +2,9 @@ import { put, takeEvery, call } from 'redux-saga/effects';
 import { loginService } from '../../services/login';
 import { postService } from '../../services/post';
 import { userLoginError, userLoginSuccess } from '../user/actions';
-import { postSuccess, postError } from '../posts/actions';
+import { postSuccess, postError, postsRealTimePush } from '../posts/actions';
 import { USER_LOGIN_REQUEST } from '../user/acion-types';
-import { POSTS_REQUEST } from '../posts/action-types';
+import { POSTS_REQUEST, POSTS_REALTIME_RECEIVED } from '../posts/action-types';
 
 function* fetchUserData({ payload }) {
   try {
@@ -32,9 +32,18 @@ function* fetchPostsData() {
   }
 }
 
+function* addPostRealTime({ payload }) {
+  try {
+    yield put(postsRealTimePush(payload));
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 function* mySaga() {
   yield takeEvery(POSTS_REQUEST, fetchPostsData);
   yield takeEvery(USER_LOGIN_REQUEST, fetchUserData);
+  yield takeEvery(POSTS_REALTIME_RECEIVED, addPostRealTime);
 }
 
 export default mySaga;

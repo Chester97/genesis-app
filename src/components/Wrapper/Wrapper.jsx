@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import * as S from './styles';
 import PropTypes from 'prop-types';
+import * as S from './styles';
 import { SideMenuContext } from '../../context/SideMenu';
 
-
-const Wrapper = (props) => {
-  const [context, setContext] = useContext(SideMenuContext);
+// Czego wrapper to jest? Nazwa nie jest jednoznaczna i nie wynika z kontekstu znaczeniowego.
+const Wrapper = ({ children }) => {
+  const { toggleMenu } = useContext(SideMenuContext);
 
   return (
-    <S.Wrapper context={context}>{props.children}</S.Wrapper>
+    <S.Wrapper context={toggleMenu}>{children}</S.Wrapper>
   );
 };
 

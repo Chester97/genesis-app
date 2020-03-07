@@ -9,6 +9,7 @@ const Login = () => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const reduxDispatch = useDispatch();
+  // Nazwa zmiennej reduxSelector nic nie mowi.
   const reduxSelector = useSelector((state) => state);
   const history = useHistory();
 
@@ -18,6 +19,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Pola nie sa walidowane przed wyslaniem ich do serwera.
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
     reduxDispatch({ type: 'USER_LOGIN_REQUEST', payload: { login, password } });

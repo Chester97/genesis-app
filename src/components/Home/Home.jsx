@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import socketIOClient from 'socket.io-client';
 import * as S from './styles';
 import Navbar from '../Navbar/Navbar';
 

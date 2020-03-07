@@ -10,6 +10,7 @@ const createRequestData = (method, body = null, authToken = null) => {
   };
 };
 
+// Niezbyt dokladna nazwa. Ta funkcja nie tworzy requestu, tylko ustawia czesc jego parametrow.
 const createRequestDataGet = (method, authToken = null) => {
   const auth = authToken ? { Authorization: `Bearer ${authToken}` } : {};
   return {
@@ -34,8 +35,8 @@ export const httpRequest = async (url, method, body) => {
 
 export const httpRequestAuth = async (url, method, body = null) => {
   try {
-    const authToken = localStorage.getItem('AccessToken');
-    let response;
+    const authToken = localStorage.getItem('AccessToken'); // Bezposrednie odwolanie do implementacji storage, zamiast przez util/serwis
+    let response; // Mutowalna zmienna, czego latwo uniknac przy funkcjach async + brak wartosci poczatkowej (null to tez wartosc)
     if (body) {
       response = await fetch(url, createRequestData(method, body, authToken));
       return response.json();
@@ -47,3 +48,5 @@ export const httpRequestAuth = async (url, method, body = null) => {
     return e;
   }
 };
+
+// Przydaloby sie, zeby funkcje mialy popisane JSDocsy, bo nie masz kontroli nad typami argumentow.

@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+// Dlaczego wszystko jest jako luzne "css", a nie sa wpiete odpowiednie tagi HTMLowe?
+
 const Button = css`
     background: transparent;
     border: 2px solid #F2F3F4;
