@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import Main from './components/Main/Main';
-import Protected from './components/Protected/Protected';
+import Home from './components/Home/index';
+import Login from './components/Login/index';
+import Register from './components/Register/index';
+import Main from './components/Main/index';
+import Protected from './components/Protected/index';
 import { SideMenuProvider } from './context/SideMenu';
 import './reset.css';
-import Wrapper from './components/Wrapper/Wrapper';
+import Wrapper from './components/Wrapper/index';
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { renderUserDetailsItem } from './utils';
-import UserDetailsItem from './UserDetailsItem/UserDetailsItem';
+import UserDetailsItem from './UserDetailsItem/index';
 import * as S from './styles';
 
 const UserDetails = () => {

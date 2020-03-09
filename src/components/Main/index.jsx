@@ -8,10 +8,10 @@ import {
   Switch,
 } from 'react-router-dom';
 import { authUser } from '../../utils/loginAuth/loginAuth';
-import Post from '../Post/Post';
-import CreatePost from '../Post/CreatePost/CreatePost';
+import Post from '../Post/index';
+import CreatePost from '../Post/CreatePost/index';
 import { SideMenuContext } from '../../context/SideMenu';
-import UserDetails from '../UserDetails/UserDetails';
+import UserDetails from '../UserDetails/index';
 import * as S from './styles';
 
 const Main = () => {
