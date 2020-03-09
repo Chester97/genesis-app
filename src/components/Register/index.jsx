@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { loginService } from '../../services/login';
+import { loginService } from '../../services/userService';
 import { registerReducer, initialFormFields } from './reducer';
 import * as S from './styles';
 
