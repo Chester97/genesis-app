@@ -1,4 +1,5 @@
 import React from 'react';
+// Nieuzywany import
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { authUser } from '../../utils/loginAuth/loginAuth';
 

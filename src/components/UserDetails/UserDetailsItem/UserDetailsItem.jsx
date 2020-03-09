@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './styles';
 
+// Ta nazwa w zasadzie moglaby byc, ale ponownie tworzy kontekst znaczeniowy (UserDetails),
+// mimo ze rodzic tego komponentu to wlasnie UserDetails.
+
 const UserDetailsItem = ({ label, value }) => (
   <S.UserDetailsItemContainer>
     <S.UserDetailsItem isLabel>

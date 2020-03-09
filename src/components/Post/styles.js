@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import * as G from '../../shared/styles';
 
 export const PostContainerBackground = styled.section`
-    height: 100%;
+    min-height: 100vh;
+    max-height: auto;
     width: 100%;
     box-sizing: border-box;
     background: #1B1B1B;
@@ -37,7 +39,7 @@ export const PostTextDetail = styled.h1`
 export const PostTextContainer = styled.div`
   padding:5px 0;
   margin-bottom: 20px;
-  height: ${(props) => (props.loadMore ? '100%' : '128px')};
+  height: ${(props) => (props.loadMore ? '128px' : 'auto')};
   overflow-y: hidden;
 `;
 
@@ -47,21 +49,11 @@ export const PostButtonContainer = styled.div`
 `;
 
 export const PostCommentButton = styled.button`
-    background: transparent;
-    border: 2px solid #F2F3F4;
-    border-radius: 4px;
-    color: #F2F3F4;
-    opacity: .5;
-    padding: 15px 0;
+    ${G.Button};
     flex:1;
     margin: 0 10px 0 0;
     &:nth-child(2) {
       margin: 0 0 0 10px;
-    }
-
-    &:hover,
-    &:focus {
-        opacity: 1;
     }
 `;
 

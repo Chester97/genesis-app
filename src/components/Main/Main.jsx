@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   useHistory,
   Route,
@@ -7,24 +8,32 @@ import {
   Switch,
 } from 'react-router-dom';
 import { authUser } from '../../utils/loginAuth/loginAuth';
-import UserDetails from '../UserDetails/UserDetails';
-import * as S from './styles';
 import Post from '../Post/Post';
 import CreatePost from '../Post/CreatePost/CreatePost';
+import { SideMenuContext } from '../../context/SideMenu';
+import UserDetails from '../UserDetails/UserDetails';
+import * as S from './styles';
 
 const Main = () => {
   const history = useHistory();
   const [collapsed, setCollapsed] = useState(false);
   const { path, url } = useRouteMatch();
   const location = useLocation();
+  const reduxDispatch = useDispatch();
+  const { toggleMenu, handleToggleMenu } = useContext(SideMenuContext);
 
-  const handleClick = () => authUser.signout(() => history.push('/login'));
+  const logoutUser = () => {
+    reduxDispatch({ type: 'USER_LOGOUT' });
+    authUser.signout(() => history.push('/login'));
+  };
 
   useEffect(() => {
     setCollapsed(false);
+    handleToggleMenu();
   }, [location]);
 
   const toggleHamburger = () => {
+    handleToggleMenu();
     setCollapsed(!collapsed);
     return null;
   };
@@ -53,7 +62,7 @@ const Main = () => {
       </Switch>
       <S.ToggleMenu isCollapsed={collapsed}>
         <S.ToggleMenuItem to={`${url}`}>Main</S.ToggleMenuItem>
-        <S.ToggleMenuItem onClick={handleClick} to="/login">Logout</S.ToggleMenuItem>
+        <S.ToggleMenuItem onClick={logoutUser} to="/login">Logout</S.ToggleMenuItem>
         <S.ToggleMenuItem to={`${url}/userDetails`}>UserDetails</S.ToggleMenuItem>
         <S.ToggleMenuItem to={`${url}/posts`}>Posts</S.ToggleMenuItem>
         <S.ToggleMenuItem to={`${url}/addPost`}>Add Post</S.ToggleMenuItem>

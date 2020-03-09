@@ -7,20 +7,24 @@ export function user(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: false,
         userData: action.payload,
       };
     case USER_LOGIN_ERROR:
       return {
         ...state,
-        error: true,
-        userData: action.payload,
+        error: action.payload,
       };
     case 'USER_LOGIN_REQUEST':
       return {
         ...state,
-        error: false,
+        error: null,
         loading: true,
+        userData: null,
+      };
+    case 'USER_LOGOUT':
+      return {
+        error: null,
+        loading: false,
         userData: null,
       };
     default:
