@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as G from '../../shared/styles';
 
 export const LoginWrapper = styled.section`
     height: calc(100% - 80px);
@@ -10,50 +11,23 @@ export const LoginWrapper = styled.section`
     padding: 40px 20px;
 `;
 
-export const LoginMainText = styled.h1`
-    text-align: center;
-    font-size: 32px;
+export const ErrorMessage = styled.h1`
+    ${G.ErrorMessage}
 `;
 
 export const LoginForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 80px;
-    min-width: 70vw;
+    ${G.Form}
 `;
 
-export const FormItem = styled.input`
-    margin: 0 0 30px 0;
-    border: none;
-    border-bottom: 1px solid white;
-    background: none;
-    color: #F2F3F4;
-    padding: 0 0 5px 5px;
-    opacity: .5;
 
-    &:focus {
-        opacity: 1;
-    }
+export const LoginMainText = styled.h1`
+    ${G.MainText}
+`;
+export const FormItem = styled.input`
+    ${G.Input}
 `;
 
 export const FormButton = styled.button`
-    background: transparent;
-    border: 2px solid #F2F3F4;
-    border-radius: 4px;
-    color: #F2F3F4;
-    opacity: .5;
-    padding: 15px 0;
-
-    &:hover,
-    &:focus {
-        opacity: 1;
-    }
+    ${G.Button}
 `;
 
-export const ErrorMessage = styled.h1`
-    color: #FFD2D2;
-    text-transform: uppercase;
-    margin-top: 60px;
-    text-align: center;
-`;

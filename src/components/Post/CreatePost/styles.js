@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import * as G from '../../../shared/styles';
 
 export const CreatePostContainer = styled.section`
     height:100%;
@@ -68,16 +68,11 @@ export const CreatePostTitle = styled.input`
 `;
 
 export const CreatePostButton = styled.button`
-  background: transparent;
-  border: 2px solid #F2F3F4;
-  border-radius: 4px;
-  color: #F2F3F4;
-  opacity: .5;
-  padding: 15px 0;
+  ${G.Button}
   margin-left: 10px;
 `;
 
 export const CreatePostText = styled.h1`
-  font-size: 26px;
+  ${G.MainText}
   margin-bottom: 20px;
 `;

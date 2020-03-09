@@ -3,6 +3,7 @@ import { loginService } from '../../services/login';
 import { registerReducer, initialFormFields } from './reducer';
 import * as S from './styles';
 
+// https://react-hook-form.com/
 
 const Register = () => {
   const [formData, dispatch] = useReducer(registerReducer, initialFormFields);
@@ -10,7 +11,7 @@ const Register = () => {
   const handleChange = (e) => {
     dispatch({ type: 'cleanAlerts' });
     const { value } = e.target;
-    dispatch({ type: 'field', fieldName: [e.target.name], payload: value });
+    dispatch({ type: 'field', fieldName: e.target.name, payload: value });
   };
 
   const handleSend = async (e) => {

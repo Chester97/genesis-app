@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const MainContainer = styled.section`
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
+// Literowka?
 export const HamburgetButton = styled.button`
   position: fixed;
   top:40px;
