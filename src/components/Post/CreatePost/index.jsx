@@ -17,7 +17,7 @@ const CreatePost = () => {
     setTitle('');
     setDescription('');
     postService.addPost({ title, description })
-      .then((data) => {
+      .then(() => {
         // Zamiast takich "alertow" przydalby sie globalny mechanizm toastow/modali/komunikatow
         setPostAlert('Post has been added');
       })

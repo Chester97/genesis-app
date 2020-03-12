@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 import { SideMenuContext } from '../../context/SideMenu';
 
-// Czego wrapper to jest? Nazwa nie jest jednoznaczna i nie wynika z kontekstu znaczeniowego.
-const Wrapper = ({ children }) => {
-  const { toggleMenu } = useContext(SideMenuContext);
+const AppWrapper = ({ children }) => {
+  const { menuOpen } = useContext(SideMenuContext);
 
   return (
-    <S.Wrapper context={toggleMenu}>{children}</S.Wrapper>
+    <S.Wrapper context={menuOpen}>{children}</S.Wrapper>
   );
 };
 
-export default Wrapper;
+export default AppWrapper;
 
-Wrapper.propTypes = {
+AppWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };

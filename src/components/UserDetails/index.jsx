@@ -8,7 +8,6 @@ const UserDetails = () => {
   const userData = useSelector((state) => state.user.userData);
   const [userDetail, setUserDetails] = useState(null);
 
-  // Selektory sa synchroniczne, wiec ten effect ze statem nie sa potrzebne.
   useEffect(() => {
     setUserDetails(renderUserDetailsItem(userData));
   }, [userData]);

@@ -20,7 +20,7 @@ const Main = () => {
   const { path, url } = useRouteMatch();
   const location = useLocation();
   const reduxDispatch = useDispatch();
-  const { toggleMenu, handleToggleMenu } = useContext(SideMenuContext);
+  const { toggleMenu, changeMenuState } = useContext(SideMenuContext);
 
   const logoutUser = () => {
     reduxDispatch({ type: 'USER_LOGOUT' });
@@ -29,11 +29,11 @@ const Main = () => {
 
   useEffect(() => {
     setCollapsed(false);
-    handleToggleMenu();
+    changeMenuState();
   }, [location]);
 
   const toggleHamburger = () => {
-    handleToggleMenu();
+    changeMenuState();
     setCollapsed(!collapsed);
     return null;
   };

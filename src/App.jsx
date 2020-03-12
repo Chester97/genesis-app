@@ -7,20 +7,20 @@ import Main from './components/Main/index';
 import Protected from './components/Protected/index';
 import { SideMenuProvider } from './context/SideMenu';
 import './reset.css';
-import Wrapper from './components/Wrapper/index';
+import AppWrapper from './components/Wrapper/index';
 
 function App() {
   return (
     <Router>
       <SideMenuProvider>
-        <Wrapper>
+        <AppWrapper>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Protected path="/main" component={Main} />
           </Switch>
-        </Wrapper>
+        </AppWrapper>
       </SideMenuProvider>
     </Router>
   );
