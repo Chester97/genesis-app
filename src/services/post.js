@@ -16,9 +16,7 @@ export const postService = {
   },
   getAllPosts: async () => {
     try {
-      // abc?
-      const abc = await httpRequestAuth(GET_ALL_POSTS_URL, 'GET');
-      return abc;
+      return await httpRequestAuth(GET_ALL_POSTS_URL, 'GET');
     } catch (e) {
       return e;
     }

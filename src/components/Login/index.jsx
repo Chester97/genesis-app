@@ -5,13 +5,12 @@ import { authUser } from '../../utils/loginAuth/loginAuth';
 import * as S from './styles';
 
 const Login = () => {
+  const userState = useSelector((state) => state.user);
   const [error, setError] = useState(null);
+  const reduxDispatch = useDispatch();
+  const history = useHistory();
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
-  const reduxDispatch = useDispatch();
-  // Nazwa zmiennej reduxSelector nic nie mowi.
-  const reduxSelector = useSelector((state) => state);
-  const history = useHistory();
 
   useEffect(() => {
     loginRef.current.focus();
@@ -26,14 +25,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (reduxSelector.user.error) {
-      setError(reduxSelector.user.error.message);
-    } else if (reduxSelector.user.userData) {
+    if (userState.error) {
+      setError(userState.error.message);
+    } else if (userState.userData) {
       setError(null);
       reduxDispatch({ type: 'POSTS_REQUEST' });
       authUser.authenticate(() => history.push('/main'));
     }
-  }, [reduxSelector.user]);
+  }, [userState]);
 
   return (
     <S.LoginWrapper>

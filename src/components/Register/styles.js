@@ -49,6 +49,10 @@ export const RegirectLink = styled(Link)`
     }
 `;
 
+export const InputWrapper = styled.div`
+    width: 100%;
+    margin-bottom: 50px;
+`;
 export const SuccessMessage = styled.p`
     text-align:center;
     color: #5cb85c

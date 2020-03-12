@@ -1,3 +1,5 @@
+import { getAccessToken } from '../localStorage/index';
+
 const createRequestData = (method, body = null, authToken = null) => {
   const auth = authToken ? { Authorization: `Bearer ${authToken}` } : {};
   return {
@@ -10,8 +12,7 @@ const createRequestData = (method, body = null, authToken = null) => {
   };
 };
 
-// Niezbyt dokladna nazwa. Ta funkcja nie tworzy requestu, tylko ustawia czesc jego parametrow.
-const createRequestDataGet = (method, authToken = null) => {
+const setRequestData = (method, authToken = null) => {
   const auth = authToken ? { Authorization: `Bearer ${authToken}` } : {};
   return {
     method,
@@ -35,15 +36,14 @@ export const httpRequest = async (url, method, body) => {
 
 export const httpRequestAuth = async (url, method, body = null) => {
   try {
-    const authToken = localStorage.getItem('AccessToken'); // Bezposrednie odwolanie do implementacji storage, zamiast przez util/serwis
-    let response; // Mutowalna zmienna, czego latwo uniknac przy funkcjach async + brak wartosci poczatkowej (null to tez wartosc)
+    const authToken = getAccessToken();
+    let response = null; // Mutowalna zmienna, czego latwo uniknac przy funkcjach async + brak wartosci poczatkowej (null to tez wartosc)
     if (body) {
       response = await fetch(url, createRequestData(method, body, authToken));
       return response.json();
     }
-    response = await fetch(url, createRequestDataGet(method, authToken));
-    const responseData = await response.json();
-    return responseData;
+    response = await fetch(url, setRequestData(method, authToken));
+    return response.json();
   } catch (e) {
     return e;
   }
