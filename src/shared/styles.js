@@ -17,7 +17,7 @@ const Button = css`
 `;
 
 const Input = css`
-    margin: 0 0 30px 0;
+    width: 100%;
     border: none;
     border-bottom: 1px solid white;
     background: none;
@@ -54,7 +54,6 @@ const Form = css`
 const ErrorMessage = css`
   color: #FFD2D2;
   text-transform: uppercase;
-  margin-top: 60px;
   text-align: center;
 `;
 

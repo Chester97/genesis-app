@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import * as S from './styles';
-import PostItem from './PostItem/PostItem';
+import PostItem from './PostItem/index';
 
 
 const Post = () => {

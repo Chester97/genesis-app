@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { renderUserDetailsItem } from './utils';
-import UserDetailsItem from './UserDetailsItem/UserDetailsItem';
+import UserDetailsItem from './UserDetailsItem/index';
 import * as S from './styles';
 
 const UserDetails = () => {
   const userData = useSelector((state) => state.user.userData);
   const [userDetail, setUserDetails] = useState(null);
 
-  // Selektory sa synchroniczne, wiec ten effect ze statem nie sa potrzebne.
   useEffect(() => {
     setUserDetails(renderUserDetailsItem(userData));
   }, [userData]);

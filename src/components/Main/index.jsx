@@ -8,10 +8,10 @@ import {
   Switch,
 } from 'react-router-dom';
 import { authUser } from '../../utils/loginAuth/loginAuth';
-import Post from '../Post/Post';
-import CreatePost from '../Post/CreatePost/CreatePost';
+import Post from '../Post/index';
+import CreatePost from '../Post/CreatePost/index';
 import { SideMenuContext } from '../../context/SideMenu';
-import UserDetails from '../UserDetails/UserDetails';
+import UserDetails from '../UserDetails/index';
 import * as S from './styles';
 
 const Main = () => {
@@ -20,7 +20,7 @@ const Main = () => {
   const { path, url } = useRouteMatch();
   const location = useLocation();
   const reduxDispatch = useDispatch();
-  const { toggleMenu, handleToggleMenu } = useContext(SideMenuContext);
+  const { toggleMenu, changeMenuState } = useContext(SideMenuContext);
 
   const logoutUser = () => {
     reduxDispatch({ type: 'USER_LOGOUT' });
@@ -29,11 +29,11 @@ const Main = () => {
 
   useEffect(() => {
     setCollapsed(false);
-    handleToggleMenu();
+    changeMenuState();
   }, [location]);
 
   const toggleHamburger = () => {
-    handleToggleMenu();
+    changeMenuState();
     setCollapsed(!collapsed);
     return null;
   };
