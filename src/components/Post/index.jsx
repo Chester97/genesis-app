@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import * as S from './styles';
@@ -13,7 +14,9 @@ const Post = () => {
           posts && posts.map((item) => (
             <PostItem
               key={item.title}
+              postId={item._id}
               title={item.title}
+              authorName={item.authorName}
               description={item.description}
               loadMoreText={item.description.length > 350 && true}
             />

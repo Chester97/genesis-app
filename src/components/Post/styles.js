@@ -66,6 +66,24 @@ export const PostAddCommentContainer = styled.div`
   }
 `;
 
+export const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 5px;
+  margin: 20px 0 40px 0;
+  align-items: center;
+`;
+
+export const CommentItem = styled.p`
+  margin: 5px;
+`;
+
+export const CommentInfo = styled.h1`
+  text-align: center;
+  font-size: 24px;
+`;
+
 export const PostTextAreaComment = styled.textarea`
   margin: 30px 0 10px 0;
   border: 1px solid white;

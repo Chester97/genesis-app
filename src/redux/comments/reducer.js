@@ -1,29 +1,29 @@
 import { initialState } from './initial-state';
 import {
-  POSTS_ERROR,
-  POSTS_REQUEST,
-  POSTS_SUCCESS,
-  POSTS_REALTIME_PUSH,
+  COMMENTS_ERROR,
+  COMMENTS_REQUEST,
+  COMMENTS_SUCCESS,
+  COMMENTS_REALTIME_PUSH,
 } from './action-types';
 
-export function posts(state = initialState, action) {
+export function comments(state = initialState, action) {
   switch (action.type) {
-    case POSTS_SUCCESS:
+    case COMMENTS_SUCCESS:
       return {
         ...state,
-        postsData: action.payload,
+        commentsData: action.payload,
       };
-    case POSTS_REALTIME_PUSH:
+    case COMMENTS_REALTIME_PUSH:
       return {
         ...state,
-        postsData: [action.payload, ...state.postsData],
+        commentsData: [action.payload, ...state.commentsData],
       };
-    case POSTS_ERROR:
+    case COMMENTS_ERROR:
       return {
         ...state,
         error: action.payload,
       };
-    case POSTS_REQUEST:
+    case COMMENTS_REQUEST:
       return {
         ...state,
       };

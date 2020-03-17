@@ -1,18 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as S from '../styles';
+import { postService } from '../../../services/post';
 
-const PostItem = ({ title, description, loadMoreText }) => {
+const PostItem = ({
+  title,
+  description,
+  loadMoreText,
+  authorName,
+  postId,
+}) => {
   const [loadMore, setLoadMore] = useState(false);
   const [addComment, setAddComment] = useState(false);
+  const comments = useSelector((state) => state.comments.commentsData);
+  const commentTextRef = useRef(null);
+
+
+  const sendComment = () => {
+    postService.addComment({
+      text: commentTextRef.current.value,
+      postId,
+    });
+  };
+
+  const renderComments = () => {
+    return comments.map((c, i) => {
+      if (c.postId === postId) {
+        return <S.CommentItem key={i}>{c.text}</S.CommentItem>;
+      }
+    });
+  }
 
   return (
     <S.PostWrapper>
-      <S.PostTextDetail>Kamil K.</S.PostTextDetail>
+      <S.PostTextDetail>{authorName}</S.PostTextDetail>
       <S.PostTextDetail>{title}</S.PostTextDetail>
       <S.PostTextContainer loadMore={loadMore}>
         {description}
       </S.PostTextContainer>
+      <S.CommentInfo>Comments</S.CommentInfo>
+      <S.CommentsContainer>
+        {comments && renderComments()}
+      </S.CommentsContainer>
       <S.PostButtonContainer>
         <S.PostCommentButton onClick={() => setAddComment(!addComment)}>Comment</S.PostCommentButton>
         {
@@ -27,8 +57,8 @@ const PostItem = ({ title, description, loadMoreText }) => {
       {
         addComment && (
           <S.PostAddCommentContainer>
-            <S.PostTextAreaComment placeholder="Type Your comment here..." />
-            <S.PostCommentButton>Add Comment</S.PostCommentButton>
+            <S.PostTextAreaComment placeholder="Type Your comment here..." ref={commentTextRef}/>
+            <S.PostCommentButton onClick={sendComment}>Add Comment</S.PostCommentButton>
           </S.PostAddCommentContainer>
         )
       }
@@ -40,5 +70,7 @@ export default PostItem;
 PostItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  authorName: PropTypes.string.isRequired,
   loadMoreText: PropTypes.bool.isRequired,
+  postId: PropTypes.string.isRequired,
 };

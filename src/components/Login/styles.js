@@ -12,6 +12,7 @@ export const LoginWrapper = styled.section`
 `;
 
 export const ErrorMessage = styled.h1`
+    margin-top: 30px;
     ${G.ErrorMessage}
 `;
 
@@ -27,7 +28,11 @@ export const FormItem = styled.input`
     ${G.Input}
 `;
 
+export const InputWrapper = styled.div`
+    width: 100%;
+    margin-bottom: 50px;
+`;
+
 export const FormButton = styled.button`
     ${G.Button}
 `;
-

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import * as S from './styles';
 import { postService } from '../../../services/post';
 
 const CreatePost = () => {
   const postTitleRef = React.createRef();
+  const userLoginName = useSelector((state) => state.user.userData.login);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [postAlert, setPostAlert] = useState('');
@@ -16,7 +18,7 @@ const CreatePost = () => {
     e.preventDefault();
     setTitle('');
     setDescription('');
-    postService.addPost({ title, description })
+    postService.addPost({ title, description, authorName: userLoginName })
       .then(() => {
         // Zamiast takich "alertow" przydalby sie globalny mechanizm toastow/modali/komunikatow
         setPostAlert('Post has been added');
